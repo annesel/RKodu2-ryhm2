@@ -575,7 +575,7 @@ AjaB <- ________________
 *** =solution
 ```{r}
 # Ülesanne 1: leia isikud, kes on andmestikus B, kuid mitte A-s
-olemasBmitteA <- sort(setdiff(B$id, A$id), decreasing = TRUE)
+olemasBmitteA <- setdiff(B$id, A$id)
 
 
 # Ülesanne 2: leia isikud, kes on mõlemas andmestikus
@@ -836,7 +836,7 @@ Töölaual on olemas kaks andmestikku:
 
 - **Ülesanne 2** Tekita liidetud andmestikku veel üks sootunnus `sugu2`: uuel tunnusel lisa sootunnuse koodidele sildid: kood `0` vastab naissoole, määra siia silt `Naine`, koodile `1` lisa silt `Mees`.
 
-- **Ülesanne 3** Leia liidetud andmestiku korral uurignugrupi tunnuse ja soo sagedustabel, nii, et uurignugrupi tunnus määrab tabeli read. Kasuta seda sootunnust, mille tekitasid eelmises ülesandes. Omista tabel muutujale `tabel1`, prindi see tabel ekraanile.
+- **Ülesanne 3** Leia liidetud andmestiku korral uuringugrupi tunnuse ja soo sagedustabel, nii, et uurignugrupi tunnus määrab tabeli read. Kasuta seda sootunnust, mille tekitasid eelmises ülesandes. Omista tabel muutujale `tabel1`, prindi see tabel ekraanile.
 
 - **Ülesanne 4** Kasutades eelnevalt leitud sagedustabelit leia tabel, kust oleks näha soo jaotus uuringugrupiti. Omista see muutujale `tabel2`, prindi ekraanile.
 
