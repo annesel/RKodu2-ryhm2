@@ -70,9 +70,19 @@ test_function(name = "read.table",
 
 
 
-test_object("andmed1",  
-            undefined_msg = "Objekt `andmed1` on defineerimata.",
-            incorrect_msg = "Objekti `andmed1` väärtus ei ole korrektne. Proovi uuesti.") 
+test_data_frame("andmed1",  
+                columns = c("siin.veerus..on.lause",  "uuritavate.identifikaator..see.on.nagu.nimi", "esimesel.katsel.saadud.tulemus..katse.toimus.hommikul.kell.8.30"),
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `andmed1` on defineerimata.",
+                undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `andmed1`.",
+                incorrect_msg = "Objekti `andmed1` väärtus ei ole korrektne. Proovi uuesti.") 
+ 
+ 
+#test_object("andmed1",  
+#%            undefined_msg = "Objekt `andmed1` on defineerimata.",
+#            incorrect_msg = "Objekti `andmed1` väärtus ei ole korrektne. Proovi uuesti.") 
+ 
+ 
  
  
  
@@ -132,7 +142,7 @@ Funktsiooni `read.table()` argumentide abil saab paika panna, mis on imporditava
 *** =sample_code
 ```{r}
 # Ülesanne 1: Impordi andmed, moodustades objekti andmed2. Prindi saadud objekt ekraanile
-andmed1 <- read.table(_________________________________)
+andmed2 <- read.table(_________________________________)
 
 
 
@@ -182,9 +192,18 @@ test_function(name = "read.table",
 #    args_not_specified_msg: in case the student did not specify all arguments listed in args.
 #    incorrect_msg: in the case the student did not correctly specify all arguments listed in args.
  
-test_object("andmed2",  
-            undefined_msg = "Objekt `andmed2` on defineerimata.",
-            incorrect_msg = "Objekti `andmed2` väärtus ei ole korrektne. Proovi uuesti.") 
+#test_object("andmed2",  
+#            undefined_msg = "Objekt `andmed2` on defineerimata.",
+#           incorrect_msg = "Objekti `andmed2` väärtus ei ole korrektne. Proovi uuesti.") 
+
+
+test_data_frame("andmed2",  
+                columns = c("nimi",  "tulemus"),
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `andmed2` on defineerimata.",
+                undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `andmed2`.",
+                incorrect_msg = "Objekti `andmed2` väärtus ei ole korrektne. Proovi uuesti.") 
+
  
  
 test_output_contains(expr = "andmed2",
@@ -248,7 +267,7 @@ Seejärel vali õige vastusevariant.
 
 *** =pre_exercise_code
 ```{r}
-# no pechttps://www.datacamp.com/teach/edit/repositories/1560/branches/true
+
 ```
 
 *** =sct
@@ -286,8 +305,8 @@ Impordi andmed failist *A.csv*.
 *** =instructions
 - **Ülesanne 1** Loe funktsioonide `read.csv()` ja `read.csv2()` abilehte. Tee kindlaks, mis argumendi abil saab määrata maksimaalse imporditava ridade arvu. Omista selle argumendi nimi stringina muutujale nimega `argumendinimi`.
 - **Ülesanne 2**: Kontrolli, kas fail *A.csv*  on juba töökaustas olemas, kasuta selleks käsku `list.files()`. Tulemuseks peab olema faili nimi. Faili saad vaadata ka aadressil *http://kodu.ut.ee/~annes/R/A.csv*  
-- **Ülesanne 3**: Impordi failist *A.csv* andmed, kasuta selleks funktsiooni `read.csv()` või `read.csv2()`, vali see funktsioon, mille korral pead vähem argumente väärtustama st see, mis argumetide vaikeväärtuste poolest paremini sobib.  Omista andmestik muutujale `andmed3`.  Pane tähele, et failis on andmeteploki all kommentaaritekst, mille peab importimisel välja jätma.
-- **Ülesanne 4**: Omista muutujale `valik` andmestikust `andmed3` esimesed 10 rida ja kõik veerud väljaarvatud neljas ja viies. Prindi ekraanile. 
+- **Ülesanne 3**: Impordi failist *A.csv* andmed, kasuta selleks funktsiooni `read.csv()` või `read.csv2()`, vali see funktsioon, mille korral pead vähem argumente väärtustama st see, mis argumentide vaikeväärtuste poolest paremini sobib.  Omista andmestik muutujale `andmed4`.  Pane tähele, et failis on andmeteploki all kommentaaritekst, mille peab importimisel välja jätma.
+- **Ülesanne 4**: Omista muutujale `valik` andmestikust `andmed4` esimesed 10 rida ja kõik veerud väljaarvatud neljas ja viies. Prindi ekraanile. 
 
 
 *** =hint
@@ -315,7 +334,7 @@ argumendinimi <- "_______________"
 
 
 # Ülesanne 3: täienda antud koodi
-andmed3 <- read.csv__("A.csv", ____________)
+andmed4 <- read.csv__("A.csv", ____________)
 
 
 # Ülesanne 4: prindi ekraanile nõutud alamosa andmestikust
@@ -336,11 +355,11 @@ list.files()
 
 
 # Ülesanne 3: täienda antud koodi
-andmed3 <- read.csv2("A.csv", nrows = 45)
+andmed4 <- read.csv2("A.csv", nrows = 45)
 
 
 # Ülesanne 4: prindi ekraanile nõutud alamosa andmestikust
-valik <- andmed3[1:10, -(4:5)]
+valik <- andmed4[1:10, -(4:5)]
 valik
 
 ```
@@ -375,14 +394,37 @@ test_function(name = "read.csv2",
 #    args_not_specified_msg: in case the student did not specify all arguments listed in args.
 #    incorrect_msg: in the case the student did not correctly specify all arguments listed in args.
  
-test_object("andmed3",  
-            undefined_msg = "Objekt `andmed3` on defineerimata.",
-            incorrect_msg = "Objekti `andmed3` väärtus ei ole korrektne. Proovi uuesti.") 
+ 
+ 
+#test_object("andmed4",  
+#            undefined_msg = "Objekt `andmed4` on defineerimata.",
+#            incorrect_msg = "Objekti `andmed4` väärtus ei ole korrektne. Proovi uuesti.") 
+
+
+test_data_frame("andmed4",  
+                columns = c( "id",   "sugu",   "vanus",   "elukoht",   "visiit",   "kasv",   "kaal",   "sirutus"),
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `andmed4` on defineerimata.",
+                undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `andmed4`.",
+                incorrect_msg = "Objekti `andmed4` väärtus ei ole korrektne. Proovi uuesti.") 
+
+ 
+
  
 #4 
-test_object("valik",  
-            undefined_msg = "Objekt `valik` on defineerimata.",
-            incorrect_msg = "Objekti `valik` väärtus ei ole korrektne. Proovi uuesti.") 
+#test_object("valik",  
+#            undefined_msg = "Objekt `valik` on defineerimata.",
+#            incorrect_msg = "Objekti `valik` väärtus ei ole korrektne. Proovi uuesti.") 
+test_data_frame("valik",  
+                columns = c( "id",   "sugu",   "vanus",    "kasv",   "kaal",   "sirutus"),
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `valik` on defineerimata.",
+                undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `valik`.",
+                incorrect_msg = "Objekti `valik` väärtus ei ole korrektne. Proovi uuesti.") 
+
+ 
+
+
 
 test_output_contains(expr = "valik",
                      times = 1,
@@ -407,7 +449,7 @@ success_msg("Hästi! Liigu järgmise ülesande juurde.")
 Töölaual on andmestiku fail nimega *B.csv*, failis on andmed 160 isiku testitulemustega. Fail on R-i imporditud järgmise käsu abil:
 
 ```{r, prompt = T}
-andmed4 <- read.csv2("B.csv")
+andmed5a <- read.csv2("B.csv")
 
 ```
 
@@ -417,9 +459,9 @@ Kui andmestiku objekti uurida, siis ilmneb, et midagi on impordil läinud valest
 
 
 *** =instructions
-- **Ülesanne 1**: Vaata, mis on imporditud andmestiku `andmed4` dimensioon (`dim`), millised on tunnused (`str`). Prindi ekraanile andmestiku esimese 5 veeru lõpp käsuga `tail`.
+- **Ülesanne 1**: Vaata, mis on imporditud andmestiku `andmed5a` dimensioon (`dim`), millised on tunnused (`str`). Prindi ekraanile andmestiku esimese 5 veeru lõpp käsuga `tail`.
 - **Ülesanne 2**: Täienda antud koodi nii, et andmete impordi tulemus oleks korrektne (korrektne arv vaatlusi). Lisaks kasuta funktsiooni `read.csv2` argumenti, mis määraks tekstiliste tunnuste tüübiks `character` mitte `Factor`. Omista tekkiv andmestik muutujale `andmed5`. 
-- **Ülesanne 3**: Moodusta andmestik `andmed6`, kus oleks andmestiku `andmed5` kõik vaatlused, kuid veergudest vaid need, mille nimi algab sõnega *hinnang* või *taust*. 
+- **Ülesanne 3**: Moodusta andmestik `valik`, kus oleks andmestiku `andmed5` kõik vaatlused, kuid veergudest vaid need, mille nimi algab sõnega *hinnang* või *taust*. 
 
 *** =hint
 - Pane tähele, et näites imporditud andmestikuobjektis on lisaks andmetele ka failis olnud kommentaarid sisse loetud.
@@ -430,7 +472,7 @@ Kui andmestiku objekti uurida, siis ilmneb, et midagi on impordil läinud valest
 *** =pre_exercise_code
 ```{r}
 download.file("http://kodu.ut.ee/~annes/R/B.csv", "B.csv",  mode = "wb")
-andmed4 <- read.csv2("B.csv")
+andmed5a <- read.csv2("B.csv")
 
 ```
 
@@ -440,9 +482,9 @@ andmed4 <- read.csv2("B.csv")
 *** =sample_code
 ```{r}
 # Ülesanne 1: Pane kirja sobivad funktsiooninimed, ning viimases käsus sobivad indeksid
-_____(andmed4)
-_____(andmed4)
-tail(andmed4[ , ___:___ ])
+_____(andmed5a)
+_____(andmed5a)
+tail(andmed5a[ , ___:___ ])
 
 
 # Ülesanne 2: tee antud koodi vajalik täiendus, prindi tulemus ekraanile
@@ -450,7 +492,7 @@ andmed5 <-  read.csv2(file = "B.csv", ________________)
 
 
 # Ülesanne 3: vali andmestikust nõutud alamosa
-andmed6 <- __________________________
+valik <- __________________________
 
 
 ```
@@ -462,9 +504,9 @@ andmed6 <- __________________________
 *** =solution
 ```{r}
 # Ülesanne 1: Pane kirja sobivad funktsiooninimed, ning viimases käsus sobivad indeksid
-dim(andmed4)
-str(andmed4)
-tail(andmed4[ , 1:5 ])
+dim(andmed5a)
+str(andmed5a)
+tail(andmed5a[ , 1:5 ])
 
 
 # Ülesanne 2: tee antud koodi vajalik täiendus, prindi tulemus ekraanile
@@ -472,18 +514,18 @@ andmed5 <-  read.csv2(file = "B.csv",   nrows = 160, stringsAsFactors = FALSE)
 
 
 # Ülesanne 3: vali andmestikust nõutud alamosa
-andmed6 <- andmed5[, substr(names(andmed5), 1, 5) %in% c("taust", "hinna")]
-andmed6
+valik <- andmed5[, substr(names(andmed5), 1, 5) %in% c("taust", "hinna")]
+valik
 ```
 
 *** =sct
 ```{r}
 
-test_predefined_objects("andmed4", 
+test_predefined_objects("andmed5a", 
                         eq_condition = "equivalent",
                         eval = TRUE,
-                        undefined_msg = "Ära kustuta andmestikku `andmed4`.", 
-                        incorrect_msg = "Ära muuda objekti `andmed4` väärtust.")
+                        undefined_msg = "Ära kustuta andmestikku `andmed5a`.", 
+                        incorrect_msg = "Ära muuda objekti `andmed5a` väärtust.")
  
 
 # 1
@@ -492,8 +534,8 @@ test_function(name = "dim",
               index = 1,
              eq_condition = "equivalent",
              not_called_msg = "Esimeses ülesandes pead kõigepealt kasutama funktsiooni `dim`",
-             args_not_specified_msg = paste("Määra `dim` käsus argumendiks andmestik `andmed4`."),
-             incorrect_msg = paste("Pane funktsioonile `dim` argumendiks andmestik `andmed4`.")) 
+             args_not_specified_msg = paste("Määra `dim` käsus argumendiks andmestik `andmed5a`."),
+             incorrect_msg = paste("Pane funktsioonile `dim` argumendiks andmestik `andmed5a`.")) 
  
 
 test_function(name = "str",
@@ -501,8 +543,8 @@ test_function(name = "str",
               index = 1,
              eq_condition = "equivalent",
              not_called_msg = "Esimeses ülesandes pead teiseks kasutama funktsiooni `names`",
-             args_not_specified_msg = paste("Määra `str` käsus argumendiks andmestik `andmed4`."),
-             incorrect_msg = paste("Pane funktsioonile `str` argumendiks andmestik `andmed4`.")) 
+             args_not_specified_msg = paste("Määra `str` käsus argumendiks andmestik `andmed5a`."),
+             incorrect_msg = paste("Pane funktsioonile `str` argumendiks andmestik `andmed5a`.")) 
  
 
 test_function(name = "tail",
@@ -510,8 +552,8 @@ test_function(name = "tail",
               index = 1,
              eq_condition = "equivalent",
              not_called_msg = "Esimeses ülesandes pead viimaseks kasutama funktsiooni `tail`",
-             args_not_specified_msg = paste("Määra `tail` käsus argumendiks andmestiku `andmed4` viis esimest veeru."),
-             incorrect_msg = paste("Pane funktsioonile `tail` argumendiks andmestiku `andmed4` viis esimest veeru.")) 
+             args_not_specified_msg = paste("Määra `tail` käsus argumendiks andmestiku `andmed5a` viis esimest veeru."),
+             incorrect_msg = paste("Pane funktsioonile `tail` argumendiks andmestiku `andmed5a` viis esimest veeru.")) 
  
 
 
@@ -527,17 +569,36 @@ test_function(name = "read.csv2",
 #    args_not_specified_msg: in case the student did not specify all arguments listed in args.
 #    incorrect_msg: in the case the student did not correctly specify all arguments listed in args.
  
-test_object("andmed5",  
-            undefined_msg = "Objekt `andmed5` on defineerimata.",
-            incorrect_msg = "Objekti `andmed5` väärtus ei ole korrektne. Proovi uuesti.") 
+#test_object("andmed5",  
+#            undefined_msg = "Objekt `andmed5` on defineerimata.",
+#            incorrect_msg = "Objekti `andmed5` väärtus ei ole korrektne. Proovi uuesti.") 
+ 
+
+test_data_frame("andmed5",  
+                columns = NULL,
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `andmed5` on defineerimata.",
+                undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `andmed5`.",
+                incorrect_msg = "Objekti `andmed5` väärtus ei ole korrektne. Proovi uuesti.") 
+
+ 
+ 
+
  
 
 
 # 3
-test_object("andmed6",  
-            undefined_msg = "Objekt `andmed6` on defineerimata.",
-            incorrect_msg = "Objekti `andmed6` väärtus ei ole korrektne. Proovi nõutud veergude valik uuesti teha.") 
- 
+#test_object("valik",  
+#            undefined_msg = "Objekt `valik` on defineerimata.",
+#            incorrect_msg = "Objekti `valik` väärtus ei ole korrektne. Proovi nõutud veergude valik uuesti teha.") 
+test_data_frame("valik",  
+                columns = NULL,
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `valik` on defineerimata.",
+                undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `valik`.",
+                incorrect_msg = "Objekti `valik` väärtus ei ole korrektne. Proovi uuesti.") 
+
+   
 
 
 #
