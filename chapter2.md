@@ -91,13 +91,22 @@ test_output_contains(expr = "filter",
                      incorrect_msg = "ÜL2: filteritunnus on ekraanile printimata.")
 
 #3
-test_object("pojad1",  
-            undefined_msg = "Andmetabel  `pojad1` on defineerimata.",
-            incorrect_msg = "Andmetabeli `pojad1` väärtus ei ole korrektne. Proovi uuesti.") 
+#test_object("pojad1",  
+#            undefined_msg = "Andmetabel  `pojad1` on defineerimata.",
+#            incorrect_msg = "Andmetabeli `pojad1` väärtus ei ole korrektne. Proovi uuesti.") 
             
+ 
+
+test_data_frame("pojad1",  
+                columns = c("l1", "b1", "l2", "b2"),
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `pojad1` on defineerimata.",
+                undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `pojad1`.",
+                incorrect_msg = "Andmestikus `pojad1` on mingid veerud valed. Proovi uuesti.") 
+
+ 
+  
             
-
-
 test_function(name = "dim",
               args = "x",
               index = 1,
@@ -230,15 +239,36 @@ test_object("filter2",
 
  
 #3
-test_object("kapsad1",  
-            undefined_msg = "Andmetabel  `kapsad1` on defineerimata.",
-            incorrect_msg = "Andmetabeli `kapsad1` väärtus ei ole korrektne. Proovi alamosa valik uuesti teha. Tingimuse kirjapanekul pead loogilise tehtena kasutama korrutamist `&`.") 
+#test_object("kapsad1",  
+#            undefined_msg = "Andmetabel  `kapsad1` on defineerimata.",
+#            incorrect_msg = "Andmetabeli `kapsad1` väärtus ei ole korrektne. Proovi alamosa valik uuesti teha. Tingimuse kirjapanekul pead loogilise tehtena kasutama korrutamist `&`.") 
             
 #4
-test_object("kapsad2",  
-            undefined_msg = "Andmetabel  `kapsad2` on defineerimata.",
-            incorrect_msg = "Andmetabeli `kapsad2` väärtus ei ole korrektne. Proovi alamosa valik uuesti teha. Tingimuse kirjapanekul pead loogilise tehtena kasutama liitmist `|`") 
+#test_object("kapsad2",  
+#            undefined_msg = "Andmetabel  `kapsad2` on defineerimata.",
+#            incorrect_msg = "Andmetabeli `kapsad2` väärtus ei ole korrektne. Proovi alamosa valik uuesti teha. Tingimuse kirjapanekul pead loogilise tehtena kasutama liitmist `|`") 
             
+ 
+#3
+test_data_frame("kapsad1",  
+                columns = c("Cult",   "Date" ,  "HeadWt", "VitC" ),
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `kapsad1` on defineerimata.",
+                undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `kapsad1`.",
+                incorrect_msg = "Andmestikus `kapsad1` on mingid veerud valed. Proovi uuesti.") 
+#4
+test_data_frame("kapsad2",  
+                columns = c("Cult",   "Date" ,  "HeadWt", "VitC" ),
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik `kapsad2` on defineerimata.",
+                undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `kapsad2`.",
+                incorrect_msg = "Andmestikus `kapsad2` on mingid veerud valed. Proovi uuesti.") 
+
+    
+ 
+ 
+ 
+ 
                         
 #5            
 test_object("kumbsuurem",  
@@ -346,11 +376,15 @@ test_data_frame("pojad", columns = c("laius_suhe"),
                 incorrect_msg = "Kas oled uue tunnuse `laus_suhe` õigesti arvutanud ja omistanud: `pojad$laus_suhe <- pojad$b1 / pojad$b2`?")
 
 #3
-test_object("uus",  
-            undefined_msg = "Andmetabel  `uus` on defineerimata.",
-            incorrect_msg = "Andmetabeli `uus` sisu ei ole korrektne. Proovi uuesti.") 
+#test_object("uus",  
+#            undefined_msg = "Andmetabel  `uus` on defineerimata.",
+#            incorrect_msg = "Andmetabeli `uus` sisu ei ole korrektne. Proovi uuesti.") 
             
           
+test_data_frame("uus", columns = c("laius_suhe"),
+                undefined_msg = "Kas moodustasid uue andmestiku `uus`?",
+                undefined_cols_msg = "Kas oled andmestikku `uus` valinud kõik nõutud veerud?",
+                incorrect_msg = "Kas oled andmstikus `uus` veerud järjestnud nii nagu vaja?")
 
   
 
@@ -505,7 +539,7 @@ Uurida tuleb vaatlusobjektide kattuvust. Loe tähelepanelikult ülesannete tekst
 
 *** =instructions
 
-- **Ülesanne 1** Kontrolli id-koodi põhjal ja sobivat hulgatehet kasutadees, millised isikud esinevad andmestikus `B`, kuid mitte andmestikus `A`. Omista nende isikute id-koodidide tähestiku järgi kahanevalt järjestatud vektor muutujale `olemasBmitteA`.
+- **Ülesanne 1** Kontrolli id-koodi põhjal ja sobivat hulgatehet kasutades, millised isikud esinevad andmestikus `B`, kuid mitte andmestikus `A`. Omista nende isikute id-koodidide  vektor muutujale `olemasBmitteA`.
 - **Ülesanne 2** Kontrolli id-koodi põhjal, millised isikud esinevad mõlemas andmestikus. Omista nende isikute id-koodide tähestiku järgi kahanevalt järjestatud vektor muutujale `AjaB`.
 
 
@@ -583,14 +617,6 @@ test_function(name = "setdiff",
 #             args_not_specified_msg = paste("Määra `sort` käsus", c("esimeseks argumendiks hulgatehte tulemus", "teiseks lisa `decreasing` argument") ),
 #             incorrect_msg = paste("Määra `sort` käsus", c("esimeseks argumendiks hulgatehte tulemus", "teiseks argumendiks `decreasing = TRUE`") ))
 
-test_function(name = "sort",
-              args = "decreasing",
-              index =2,
-             eq_condition = "equivalent",
-             not_called_msg = "Mõlemas ülesandes pead kasutama ka funktsiooni `sort`",
-             args_not_specified_msg = paste("Määra `sort` käsus  `decreasing` argument"),
-             incorrect_msg = paste("Määra `sort` käsus `decreasing = TRUE`") )
-
 
 
 
@@ -610,6 +636,14 @@ test_function(name = "intersect",
              not_called_msg = "Teises ülesandes pead kasutama funktsiooni `intersect`",
              args_not_specified_msg = paste("Määra `intersect` käsus ka kaks argumenti."),
              incorrect_msg = "Oled funktsioonile `intersect` andnud valed argumendid, argumentideks peavad olema id-koodi tunnused mõlemast andmestikust")
+
+test_function(name = "sort",
+              args = "decreasing",
+              index =1,
+             eq_condition = "equivalent",
+             not_called_msg = "Teises ülesandes pead kasutama ka funktsiooni `sort`",
+             args_not_specified_msg = paste("Määra `sort` käsus  `decreasing` argument."),
+             incorrect_msg = paste("Määra `sort` käsus `decreasing = TRUE`") )
 
 
 
@@ -725,9 +759,19 @@ test_function(name = "merge",
 
 
 
-test_object("uuring1",  
-            undefined_msg = "Andmestik  `uuring1` on defineerimata.",
-            incorrect_msg = "Andmestiku `uuring1` sisu ei ole korrektne. Proovi uuesti.") 
+#test_object("uuring1",  
+#            undefined_msg = "Andmestik  `uuring1` on defineerimata.",
+#            incorrect_msg = "Andmestiku `uuring1` sisu ei ole korrektne. Proovi uuesti.") 
+
+
+
+test_data_frame("uuring1",
+                columns = NULL,
+                eq_condition = "equivalent",
+                undefined_msg = "Andmestik  `uuring1` on defineerimata.",
+                incorrect_msg = "Andmestiku `uuring1` sisu ei ole korrektne. Proovi uuesti.",
+                    undefined_cols_msg = NULL)
+
             
    
 #  2
@@ -890,7 +934,7 @@ test_function(name = "merge",
 test_data_frame("uuring2", columns = c("id",  "vanus",    "elukoht" ,   "visiit" ,    "kasv",       "kaal",       "sirutus",    "grupp", "hinnang82" ,
  "hinnang86",  "hinnang90", "hinnang99",  "taust1" ,    "taust2"    , "taust3"   ,  "taust4" ),
                 undefined_msg = "Andmestik `uuring2` on tekitamata!",
-                undefined_cols_msg = NULL,
+                undefined_cols_msg = "Andmestikust `uuring2` on mõni nõutud veerg puudu.",
                 incorrect_msg = "Andmestikus `uuring2` on viga!")
 
         
