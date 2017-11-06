@@ -99,7 +99,7 @@ test_output_contains(expr = "filter",
 
 test_data_frame("pojad1",  
                 columns = c("l1", "b1", "l2", "b2"),
-                eq_condition = "equivalent",
+                eq_condition = "equal",
                 undefined_msg = "Andmestik `pojad1` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `pojad1`.",
                 incorrect_msg = "Andmestik `pojad1` ei vasta tingimustele. Proovi uuesti.") 
@@ -252,14 +252,14 @@ test_object("filter2",
 #3
 test_data_frame("kapsad1",  
                 columns = c("Cult",   "Date" ,  "HeadWt", "VitC" ),
-                eq_condition = "equivalent",
+                eq_condition = "equal",
                 undefined_msg = "Andmestik `kapsad1` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `kapsad1`.",
-                incorrect_msg = "Andmestik `kapsas1` ei vasta tingimustele. Proovi uuesti.") 
+                incorrect_msg = "Andmestik `kapsad1` ei vasta tingimustele. Proovi uuesti.") 
 #4
 test_data_frame("kapsad2",  
                 columns = c("Cult",   "Date" ,  "HeadWt", "VitC" ),
-                eq_condition = "equivalent",
+                eq_condition = "equal",
                 undefined_msg = "Andmestik `kapsad2` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `kapsad2`.",
                 incorrect_msg = "Andmestik `kapsad2` ei vasta tingimustele. Proovi uuesti.") 
@@ -364,6 +364,7 @@ uus <- pojad[, c("l1", "l2", "pikkus_vahe", "b1", "b2", "laius_suhe")]
 
 # 1
 test_data_frame("pojad", columns = c("pikkus_vahe"),
+                eq_condition = "equal",
                 undefined_msg = "Ära kustuta andmstikku `pojad`!",
                 undefined_cols_msg = "Kas oled andmestikku `pojad` lisanud veeru `pikkus_vahe`?",
                 incorrect_msg = "Kas oled uue tunnuse `pikkus_vahe` õigesti arvutanud ja omistanud: `pojad$pikkus_vahe <- pojad$l1 - pojad$l2`?")
@@ -371,6 +372,7 @@ test_data_frame("pojad", columns = c("pikkus_vahe"),
 
 # 2
 test_data_frame("pojad", columns = c("laius_suhe"),
+                eq_condition = "equal",
                 undefined_msg = "Ära kustuta andmstikku `pojad`!",
                 undefined_cols_msg = "Kas oled andmestikku `pojad` lisanud veeru `laius_suhe`?",
                 incorrect_msg = "Kas oled uue tunnuse `laus_suhe` õigesti arvutanud ja omistanud: `pojad$laus_suhe <- pojad$b1 / pojad$b2`?")
@@ -381,10 +383,12 @@ test_data_frame("pojad", columns = c("laius_suhe"),
 #            incorrect_msg = "Andmetabeli `uus` sisu ei ole korrektne. Proovi uuesti.") 
             
           
-test_data_frame("uus", columns = c("laius_suhe"),
+test_data_frame("uus", 
+            eq_condition = "equal",
+            columns = c("l1", "l2", "pikkus_vahe", "b1", "b2", "laius_suhe"),
                 undefined_msg = "Kas moodustasid uue andmestiku `uus`?",
                 undefined_cols_msg = "Kas oled andmestikku `uus` valinud kõik nõutud veerud?",
-                incorrect_msg = "Kas oled andmstikus `uus` veerud järjestnud nii nagu vaja?")
+                incorrect_msg = "Kas oled andmstikus `uus` veerud järjestanud nii nagu vaja?")
 
   
 

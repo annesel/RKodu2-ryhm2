@@ -403,7 +403,7 @@ test_function(name = "read.csv2",
 
 test_data_frame("andmed4",  
                 columns = c( "id",   "sugu",   "vanus",   "elukoht",   "visiit",   "kasv",   "kaal",   "sirutus"),
-                eq_condition = "equivalent",
+                eq_condition = "equal",
                 undefined_msg = "Andmestik `andmed4` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `andmed4`.",
                 incorrect_msg = "Objekti `andmed4` väärtus ei ole korrektne. Proovi uuesti.") 
@@ -417,7 +417,7 @@ test_data_frame("andmed4",
 #            incorrect_msg = "Objekti `valik` väärtus ei ole korrektne. Proovi uuesti.") 
 test_data_frame("valik",  
                 columns = c( "id",   "sugu",   "vanus",    "kasv",   "kaal",   "sirutus"),
-                eq_condition = "equivalent",
+                eq_condition = "equal",
                 undefined_msg = "Andmestik `valik` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `valik`.",
                 incorrect_msg = "Objekti `valik` väärtus ei ole korrektne. Proovi uuesti.") 
@@ -576,7 +576,7 @@ test_function(name = "read.csv2",
 
 test_data_frame("andmed5",  
                 columns = NULL,
-                eq_condition = "equivalent",
+                eq_condition = "equal",
                 undefined_msg = "Andmestik `andmed5` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `andmed5`.",
                 incorrect_msg = "Objekti `andmed5` väärtus ei ole korrektne. Proovi uuesti.") 
@@ -593,7 +593,7 @@ test_data_frame("andmed5",
 #            incorrect_msg = "Objekti `valik` väärtus ei ole korrektne. Proovi nõutud veergude valik uuesti teha.") 
 test_data_frame("valik",  
                 columns = NULL,
-                eq_condition = "equivalent",
+                eq_condition = "equal",
                 undefined_msg = "Andmestik `valik` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `valik`.",
                 incorrect_msg = "Objekti `valik` väärtus ei ole korrektne. Proovi uuesti.") 
