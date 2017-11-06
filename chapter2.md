@@ -102,7 +102,7 @@ test_data_frame("pojad1",
                 eq_condition = "equivalent",
                 undefined_msg = "Andmestik `pojad1` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `pojad1`.",
-                incorrect_msg = "Andmestikus `pojad1` on mingid veerud valed. Proovi uuesti.") 
+                incorrect_msg = "Andmestik `pojad1` ei vasta tingimustele. Proovi uuesti.") 
 
  
   
@@ -255,14 +255,14 @@ test_data_frame("kapsad1",
                 eq_condition = "equivalent",
                 undefined_msg = "Andmestik `kapsad1` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `kapsad1`.",
-                incorrect_msg = "Andmestikus `kapsad1` on mingid veerud valed. Proovi uuesti.") 
+                incorrect_msg = "Andmestik `kapsas1` ei vasta tingimustele. Proovi uuesti.") 
 #4
 test_data_frame("kapsad2",  
                 columns = c("Cult",   "Date" ,  "HeadWt", "VitC" ),
                 eq_condition = "equivalent",
                 undefined_msg = "Andmestik `kapsad2` on defineerimata.",
                 undefined_cols_msg = "Kontrolli, mis tunnused on andmestikus `kapsad2`.",
-                incorrect_msg = "Andmestikus `kapsad2` on mingid veerud valed. Proovi uuesti.") 
+                incorrect_msg = "Andmestik `kapsad2` ei vasta tingimustele. Proovi uuesti.") 
 
     
  
